@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <main>
+    {% if page.url != '/' %}
+      <header>
+        <a href="/">Back home</a>
+      </header>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+</html>

@@ -1,0 +1,36 @@
+---
+title: 'Category Archive'
+pagination:
+  data: collections.categories
+  size: 1
+  alias: category
+permalink: '/category/{{ category | slugify }}.xml'
+siteUrl: 'https://example.com'
+authorName: 'Example author'
+authorEmail: 'hi@example.com'
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Low-tech Eleventy Categories - {{ category }}</title>
+  <subtitle>Content filed under “{{ category }}”</subtitle>
+  <link href="{{ siteUrl }}{{ permalink }}" rel="self"/>
+  <link href="{{ siteUrl }}/"/>
+  <updated>{{ collections.blog | rssLastUpdatedDate }}</updated>
+  <id>{{ siteUrl }}</id>
+  <author>
+    <name>{{ authorName }}</name>
+    <email>{{ authorEmail }}</email>
+  </author>
+  {% for post in collections[category].reverse() %}
+    {% set absolutePostUrl %}{{ siteUrl }}{{ post.url | url }}{% endset %}
+    <entry>
+      <title>{{ post.data.title }}</title>
+      <link href="{{ absolutePostUrl }}"/>
+      <updated>{{ post.date | rssDate }}</updated>
+      <id>{{ absolutePostUrl }}</id>
+      <content type="html">
+        <![CDATA[{{ post.templateContent | safe }}]]>
+      </content>
+    </entry>
+  {% endfor %}
+</feed>

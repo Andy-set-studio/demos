@@ -1,0 +1,28 @@
+---
+title: 'Category Archive'
+pagination:
+  data: collections.categories
+  size: 1
+  alias: category
+permalink: '/category/{{ category | slugify }}/index.html'
+---
+
+{% extends "base.njk" %}
+
+{% set posts = collections[category] %}
+
+{% block content %}
+  <article>
+    <h1>{{ category }}</h1>
+    <p>
+      <a href="/category/{{ category | slugify }}.xml">Subscribe with RSS</a>
+    </p>
+    <ol reversed>
+      {% for item in posts %}
+        <li>
+          <a href="{{ item.url }}">{{ item.data.title }}</a>
+        </li>
+      {% endfor %}
+    </ol>
+  </article>
+{% endblock %}

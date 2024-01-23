@@ -1,0 +1,30 @@
+---
+title: 'Low-tech Eleventy Categories' 
+permalink: '/'
+---
+
+{% extends 'base.njk' %}
+
+{% block content %}
+  <article>
+    <h1>{{ title }}</h1>
+
+    <h2>Posts</h2>
+    <ol>
+      {% for item in collections.posts %}
+        <li>
+          <a href="{{ item.url }}">{{ item.data.title }}</a>
+        </li>
+      {% endfor %}
+    </ol>
+
+    <h2>Categories</h2>
+    <ul>
+      {% for category in collections.categories %}
+        <li>
+          <a href="/category/{{ category | slugify }}">{{ category }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </article>
+{% endblock %}
