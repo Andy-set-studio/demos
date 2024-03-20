@@ -1,0 +1,280 @@
+/* Constant design tokens */
+:root {
+  /* Fluid type scale */
+  --size-step--2: clamp(0.6944rem, 0.6376rem + 0.284vi, 0.84rem);
+  --size-step--1: clamp(0.8333rem, 0.7488rem + 0.4228vi, 1.05rem);
+  --size-step-0: clamp(1rem, 0.878rem + 0.6098vi, 1.3125rem);
+  --size-step-1: clamp(1.2rem, 1.028rem + 0.8598vi, 1.6406rem);
+  --size-step-2: clamp(1.44rem, 1.2016rem + 1.1918vi, 2.0508rem);
+  --size-step-3: clamp(1.728rem, 1.402rem + 1.6302vi, 2.5635rem);
+  --size-step-4: clamp(2.0736rem, 1.6323rem + 2.2063vi, 3.2043rem);
+  --size-step-5: clamp(2.4883rem, 1.8963rem + 2.9602vi, 4.0054rem);
+  --size-step-6: clamp(2.986rem, 2.1974rem + 3.943vi, 5.0068rem);
+  --size-step-7: clamp(3.5832rem, 2.5392rem + 5.2201vi, 6.2585rem);
+
+  /* Fluid space scale */
+  --space-3xs: clamp(0.25rem, 0.2256rem + 0.122vi, 0.3125rem);
+  --space-2xs: clamp(0.5rem, 0.4268rem + 0.3659vi, 0.6875rem);
+  --space-xs: clamp(0.75rem, 0.6524rem + 0.4878vi, 1rem);
+  --space-s: clamp(1rem, 0.878rem + 0.6098vi, 1.3125rem);
+  --space-m: clamp(1.5rem, 1.3049rem + 0.9756vi, 2rem);
+  --space-l: clamp(2rem, 1.7561rem + 1.2195vi, 2.625rem);
+  --space-xl: clamp(3rem, 2.6341rem + 1.8293vi, 3.9375rem);
+  --space-2xl: clamp(4rem, 3.5122rem + 2.439vi, 5.25rem);
+  --space-3xl: clamp(6rem, 5.2683rem + 3.6585vi, 7.875rem);
+
+  /* Colours */
+  --color-light: #ffffff;
+  --color-light-shade: #f3f5f7;
+  --color-dark: #000000;
+  --color-mid: #ebebeb;
+  --color-mid-shade: #dedede;
+  --color-midnight: #4a4e69;
+  --color-midnight-shade: #22223b;
+  --color-eggshell: #f2e9e4;
+  --color-blue: #3b71fe;
+  --color-blue-glare: #eef6fd;
+  --color-slate: #4f5563;
+}
+
+/* Abstracted, global tokens (theme) */
+:root {
+  --leading: 1.5;
+  --leading-short: 1.3;
+  --leading-fine: 1.1;
+  --leading-flat: 1;
+  --leading-loose: 1.7;
+  --kerning: normal;
+  --kerning-tight: -0.04ch;
+  --kerning-loose: 0.1ch;
+  --text-size-base: var(--size-step-0);
+  --text-size-lede: var(--size-step-1);
+  --text-size-meta: var(--size-step--1);
+  --text-size-heading-1: var(--size-step-5);
+  --text-size-heading-2: var(--size-step-4);
+  --text-size-heading-3: var(--size-step-3);
+  --text-size-heading-4: var(--size-step-2);
+  --text-size-prose: var(--text-size-base);
+  --space-gutter: var(--space-m);
+  --space-gutter-s: var(--space-s);
+  --space-gutter-l: var(--space-l);
+  --space-regions: var(--space-xl);
+  --size-wrapper-max-width: 1135px;
+  --color-global-bg: var(--color-light);
+  --color-global-text: var(--color-dark);
+  --color-surface-bg: var(--color-mid);
+  --color-surface-bg-interact: var(--color-mid-shade);
+  --color-surface-text: var(--color-dark);
+  --color-surface-text-interact: var(--color-dark);
+  --font-base: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  --font-display: var(--font-base);
+  --font-lede: var(--font-base);
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+  --focus-ring: 2px solid currentColor;
+  --focus-ring-offset: 2px;
+}
+
+/* Core styles (shared) */
+body {
+  font-family: var(--font-base);
+  font-size: var(--text-size-base);
+  line-height: var(--leading);
+  background: var(--color-global-bg);
+  color: var(--color-global-text);
+}
+
+h1 {
+  font-size: var(--text-size-heading-1);
+}
+
+h2 {
+  font-size: var(--text-size-heading-2);
+}
+
+h3 {
+  font-size: var(--text-size-heading-3);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: var(--kerning-tight);
+}
+
+h1,
+h2 {
+  font-weight: var(--font-weight-black);
+}
+
+h4,
+h5,
+h6 {
+  font-size: var(--text-size-heading-4);
+}
+
+:where(body, h1, h2, h3, h4, p, figure, blockquote, dl, dd) {
+  margin: 0;
+}
+
+ul[class] {
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Core shared layouts */
+
+/*
+WRAPPER COMPOSITION 
+A common wrapper/container
+*/
+.wrapper {
+  margin-inline: auto;
+  max-width: clamp(16rem, var(--size-wrapper-max-width, 100vw), 1200px);
+  padding-left: var(--space-gutter);
+  padding-right: var(--space-gutter);
+  position: relative;
+}
+
+/* 
+SIDEBAR
+More info: https://every-layout.dev/layouts/sidebar/
+A layout that allows you to have a flexible main content area
+and a "fixed" width sidebar that sits on the left or right.
+If there is not enough viewport space to fit both the sidebar
+width *and* the main content minimum width, they will stack
+on top of each other
+
+CUSTOM PROPERTIES AND CONFIGURATION
+--space-gutter: This defines the space
+between the sidebar and main content.
+
+--sidebar-target-width (20rem): How large the sidebar should be
+
+--sidebar-content-min-width(50%): The minimum size of the main content area
+*/
+.sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-gutter);
+}
+
+.sidebar > :first-child {
+  flex-basis: var(--sidebar-target-width, 20rem);
+  flex-grow: 1;
+}
+
+.sidebar > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: var(--sidebar-content-min-width, 50%);
+}
+
+/* AUTO GRID
+Related Every Layout: https://every-layout.dev/layouts/grid/
+More info on the flexible nature: https://piccalil.li/tutorial/create-a-responsive-grid-layout-with-no-media-queries-using-css-grid/
+A flexible layout that will create an auto-fill grid with
+configurable grid item sizes
+
+CUSTOM PROPERTIES AND CONFIGURATION
+--space-gutter (var(--space-s-m)): This defines the space
+between each item.
+
+--grid-min-item-size (14rem): How large each item should be
+ideally, as a minimum.
+
+--grid-placement (auto-fill): Set either auto-fit or auto-fill
+to change how empty grid tracks are handled */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    var(--grid-placement, auto-fill),
+    minmax(var(--grid-min-item-size, 16rem), 1fr)
+  );
+  gap: var(--space-gutter, var(--space-s-l));
+}
+
+/* 
+FLOW COMPOSITION 
+Like the Every Layout stack: https://every-layout.dev/layouts/stack/
+Info about this implementation: https://piccalil.li/quick-tip/flow-utility/ 
+*/
+.flow > * + * {
+  margin-top: var(--space-flow, 1em);
+}
+
+/*
+CLUSTER
+More info: https://every-layout.dev/layouts/cluster/
+A layout that lets you distribute items with consitent
+spacing, regardless of their size
+
+CUSTOM PROPERTIES AND CONFIGURATION
+--space-gutter (var(--space-s-m)): This defines the space
+between each item.
+
+--cluster-horizontal-alignment (flex-start) How items should align
+horizontally. Can be any acceptable flexbox aligmnent value.
+
+--cluster-vertical-alignment How items should align vertically.
+Can be any acceptable flexbox alignment value.
+*/
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-gutter);
+  justify-content: var(--cluster-horizontal-alignment, flex-start);
+  align-items: var(--cluster-vertical-alignment, center);
+}
+
+/* Specific utilities */
+.region {
+  padding-block: var(--space-regions);
+}
+
+/* Configuration powered components */
+.button {
+  display: inline-flex;
+  gap: var(--button-gap, var(--space-gutter));
+  padding: var(--button-padding, 0.8em 1.5em);
+  background: var(--button-bg, var(--color-surface-bg));
+  color: var(--button-text, var(--color-surface-text));
+  line-height: var(--button-leading, var(--leading-fine));
+  border-radius: var(--button-radius, 0);
+  text-decoration: none;
+  text-transform: var(--button-text-transform, uppercase);
+  font-weight: var(--button-font-weight, var(--font-weight-medium));
+  letter-spacing: var(--button-kerning, var(--kerning-loose));
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--button-interact-bg, var(--color-surface-bg-interact));
+  color: var(--button-interact-text, var(--color-surface-text-interact));
+}
+
+/* Standard components */
+.lede {
+  font-size: var(--text-size-lede);
+  line-height: var(--leading-short);
+  font-family: var(--font-lede);
+}
+
+.intro {
+  --sidebar-target-width: 10ch;
+}
+
+.intro h1 {
+  transform: translateY(-0.2ex);
+}

@@ -1,0 +1,59 @@
+/* Custom property configuration */
+:root {
+  --color-global-bg: var(--color-light);
+  --color-global-text: var(--color-midnight-shade);
+  --color-surface-bg: var(--color-blue);
+  --color-surface-bg-interact: var(--color-dark);
+  --color-surface-text: var(--color-light);
+  --color-surface-text-interact: var(--color-light);
+  --button-radius: 1.5em;
+  --font-lede: Georgia, serif;
+  --font-display: 'Khula', sans-serif;
+  --text-size-heading-1: var(--size-step-6);
+}
+
+/* Specific theme styles and settings */
+.intro {
+  --space-regions: var(--space-2xl) var(--space-3xl);
+
+  --sidebar-target-width: 11ch;
+  background: linear-gradient(85deg, #eef6fd 35%, var(--color-light-shade) 100%);
+}
+
+.intro .sidebar {
+  /* Going straight for gap so it doesn't affect the wrapper */
+  gap: var(--space-s) var(--space-l);
+}
+
+.lede {
+  font-style: italic;
+}
+
+.quote {
+  position: relative;
+  border-radius: 1em;
+  overflow: hidden;
+}
+
+.quote img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.quote q {
+  quotes: none;
+  background: var(--color-midnight-shade);
+  color: var(--color-light);
+  padding: 0.5em 1em;
+  background: rgb(from var(--color-midnight-shade) r g b / 70%);
+  backdrop-filter: blur(2px);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.grid {
+  --space-flow: var(--space-l);
+}

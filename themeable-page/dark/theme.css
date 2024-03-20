@@ -1,0 +1,42 @@
+/* Custom property configuration */
+
+:root {
+  --color-global-bg: var(--color-midnight);
+  --color-global-text: var(--color-eggshell);
+  --color-surface-bg: var(--color-midnight-shade);
+  --color-surface-bg-interact: var(--color-dark);
+  --color-surface-text: var(--color-eggshell);
+  --color-surface-text-interact: var(--color-eggshell);
+}
+
+/* Specific theme styles and settings */
+body {
+  background-image: url('https://assets.codepen.io/174183/noise.webp');
+}
+
+.quote {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-gutter-s);
+  font-size: var(--text-size-meta);
+}
+
+.quote img {
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  width: clamp(4rem, 30%, 6rem);
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.quote q {
+  quotes: none;
+}
+
+.grid {
+  --space-flow: var(--space-l);
+}
+
+.social-proof {
+  background: rgb(from var(--color-midnight-shade) r g b / 50%);
+}

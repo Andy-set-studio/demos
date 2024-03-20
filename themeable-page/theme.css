@@ -1,0 +1,23 @@
+/* Specific theme styles and settings */
+
+.quote {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-gutter-s);
+  font-size: var(--text-size-meta);
+}
+
+.quote img {
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  width: clamp(4rem, 30%, 6rem);
+  flex-shrink: 0;
+}
+
+.quote q {
+  quotes: none;
+}
+
+.grid {
+  --space-flow: var(--space-l);
+}
