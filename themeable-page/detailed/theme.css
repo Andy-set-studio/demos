@@ -17,7 +17,11 @@
   --space-regions: var(--space-2xl) var(--space-3xl);
 
   --sidebar-target-width: 11ch;
-  background: linear-gradient(85deg, #eef6fd 35%, var(--color-light-shade) 100%);
+  background: linear-gradient(
+    85deg,
+    var(--color-blue-glare) 35%,
+    var(--color-light-shade) 100%
+  );
 }
 
 .intro .sidebar {
